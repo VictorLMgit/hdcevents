@@ -18,6 +18,10 @@
                 <input type="text" name="city" id="city" class="form-control" placeholder="Ex: Fortaleza-CE">
             </div>
             <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" name="date" id="date" class="form-control">
+            </div>
+            <div class="form-group">
                 <label for="description">Event description</label>
                 <input type="text" name="description" id="description" class="form-control" placeholder="Something about your event">
             </div>
@@ -36,6 +40,7 @@
                 <div class="form-group">
                     <input type="checkbox" name="items[]" value="Brindes"> Brindes  
                 </div>
+                btn
             </div>
             <div class="form-group">
                 <P>Is Private Event?</P>
