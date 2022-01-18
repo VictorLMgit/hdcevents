@@ -40,7 +40,7 @@
                 <div class="form-group">
                     <input type="checkbox" name="items[]" value="Brindes"> Brindes  
                 </div>
-                btn
+                
             </div>
             <div class="form-group">
                 <P>Is Private Event?</P>
