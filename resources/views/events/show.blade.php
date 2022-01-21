@@ -13,7 +13,7 @@
             <h1>{{$event->title}}</h1>
             <p class="event-city"> <ion-icon name="location-outline"></ion-icon> {{$event->city}} </p>
             <p class="events-participants"><ion-icon name="people-outline"></ion-icon> X Participants </p>
-            <p class="event-owner"><ion-icon name="finger-print-outline"></ion-icon> Creator: {{$user->name}}</p>
+            <p class="event-owner"><ion-icon name="finger-print-outline"></ion-icon> {{$eventOwner['name']}}</p>
             <p class="event-date"><ion-icon name="today-outline"></ion-icon> {{date('d/m/Y', strtotime($event->date))}}</p>
             <h3> </ion-icon> O evento possui:</h3>
             <ul id='item-list'>
