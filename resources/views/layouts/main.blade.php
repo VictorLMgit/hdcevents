@@ -29,8 +29,10 @@
                         <a href="/events/create" class="nav-link">Create Event</a>
                     </li>
                     @auth
+                    
+
                     <li class="nav-item">
-                        <a href="/dashboard" class="nav-link">Meus Eventos</a>
+                        <a href="/dashboard" class="nav-link">My Events</a>
 
                     </li>
                     <li class="nav-item">
@@ -40,7 +42,7 @@
                             class="nav-link"
                             onclick="event.preventDefault();
                             this.closest('form').submit();">
-                            sair</a>
+                            Logout</a>
                         </form>
                     </li>
                     @endauth

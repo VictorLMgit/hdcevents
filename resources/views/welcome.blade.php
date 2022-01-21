@@ -21,10 +21,10 @@
       @endif
 
       <div id="cards-container" class="row">
-      @if(count($events) == 0 && $events)
+      @if(count($events) == 0 && $search)
          <p class = "subtitle">Não foi encontrado nenhum evento com: <i>{{$search}}</i> <a href="/"> Ver Todos</a> </p>
       @elseif(count($events) == 0)
-         <p class = "subtitle">Nenhum há eventos disponíveis</p>
+         <p class = "subtitle">Não há eventos disponíveis</p>
       @endif
          @foreach ($events as $event)
          <div class="card col-md-3">
