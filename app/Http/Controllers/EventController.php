@@ -26,9 +26,8 @@ class EventController extends Controller
     public function register(){
         return view('events.register');
     }
-    public function login(){
-        return view('events.login');
-    }
+    
+    
     public function store(Request $request){
         $event = new Event();
         $event->title = $request->title;
