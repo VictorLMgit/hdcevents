@@ -208,3 +208,10 @@ footer p {
 #item-list li{
   display: flex;
 }
+
+/* Edit Page */
+
+.img-preview{
+  margin-top: 15px;
+  width: 500px;
+}
