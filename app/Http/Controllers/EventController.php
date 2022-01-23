@@ -96,4 +96,10 @@ class EventController extends Controller
 
         return redirect('/dashboard')->with('flash_massage', 'The event was edited');
     }
+    public function joinEvent($id){
+        $user = auth()->user();
+        $user->eventsAsParticipant()->attach($id);
+        $event = Event::findOrFail($id);
+        return redirect('/dashboard')->with('flash_massage', 'Subscribed successfully');
+    }
 }

@@ -12,7 +12,7 @@
         <div id="info-container" class="col-md-6">
             <h1>{{$event->title}}</h1>
             <p class="event-city"> <ion-icon name="location-outline"></ion-icon> {{$event->city}} </p>
-            <p class="events-participants"><ion-icon name="people-outline"></ion-icon> X Participants </p>
+            <p class="events-participants"><ion-icon name="people-outline"></ion-icon> {{count($event->users)}} Participants </p>
             <p class="event-owner"><ion-icon name="finger-print-outline"></ion-icon> {{$eventOwner['name']}}</p>
             <p class="event-date"><ion-icon name="today-outline"></ion-icon> {{date('d/m/Y', strtotime($event->date))}}</p>
             <h3> </ion-icon> O evento possui:</h3>
@@ -22,9 +22,14 @@
                 @endforeach
             </ul>
             
-            
+            <form action="/events/join/{{$event->id}}" method="post">
+                @csrf
+                <a href="/events/join/{{$event->id}}" class="btn btn-primary"
+                onclick="event.preventDefault();
+                this.closest('form').submit();">Confirmar Presença</a>
+                
+            </form>
              
-            <a href="#" class="btn btn-primary" id="event-submit">Confirmar Presença</a>
         </div>
         
         <div class="dol-md-12" id="description-container">
