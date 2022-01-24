@@ -58,14 +58,30 @@ class EventController extends Controller
 
         $event = Event::findOrFail($id);
         $eventOwner = User::where('id', $event->user_id)->first()->toArray();
-        return view('events.show', ['event' => $event, 'eventOwner' => $eventOwner]);
+        $user = auth()->user();
+        
+        $hasUserJoined = false;
+
+        if($user){
+            $userEvents = $user->eventsAsParticipant->toArray();
+            foreach ($userEvents as $eventAsParticipant){
+                if($eventAsParticipant['id'] == $id ){
+                    $hasUserJoined = true;
+                }
+            }
+
+        }
+
+
+        return view('events.show', ['event' => $event, 'eventOwner' => $eventOwner, 'hasUserJoined'=>$hasUserJoined]);
         
     }
 
     public function dashboard(){
         $user = auth()->user();
         $events = $user->events;
-        return view('events.dashboard', ['events'=>$events]);
+        $eventsAsParticipant = $user->eventsAsParticipant;
+        return view('events.dashboard', ['events'=>$events , 'eventsAsParticipant'=> $eventsAsParticipant]);
     }
 
     public function destroy($id){
@@ -75,6 +91,12 @@ class EventController extends Controller
     }
     public function edit($id){
         $event = Event::findOrFail($id);
+
+        $user = auth()->user();
+        if($user->id != $event->user_id){
+            return redirect('/dashboard');
+        }
+
         return view('events.edit',['event'=>$event]);
     }
     public function update(Request $request){
@@ -101,5 +123,11 @@ class EventController extends Controller
         $user->eventsAsParticipant()->attach($id);
         $event = Event::findOrFail($id);
         return redirect('/dashboard')->with('flash_massage', 'Subscribed successfully');
+    }
+    public function leaveEvent($id){
+        $user = auth()->user();
+        $user->eventsAsParticipant()->detach($id);
+        $event = Event::findOrFail($id);
+        return redirect('/dashboard')->with('flash_massage', 'leave successfully');
     }
 }

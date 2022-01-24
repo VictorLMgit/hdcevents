@@ -22,14 +22,17 @@
                 @endforeach
             </ul>
             
+            @if(!$hasUserJoined)
             <form action="/events/join/{{$event->id}}" method="post">
                 @csrf
                 <a href="/events/join/{{$event->id}}" class="btn btn-primary"
                 onclick="event.preventDefault();
-                this.closest('form').submit();">Confirmar Presença</a>
+                this.closest('form').submit();">Join</a>
                 
             </form>
-             
+            @else
+            <p class="already-joined"> you already has joined! </p>
+            @endif
         </div>
         
         <div class="dol-md-12" id="description-container">

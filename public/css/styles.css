@@ -209,6 +209,14 @@ footer p {
   display: flex;
 }
 
+.already-joined{
+  margin: 15px 0px;
+  color: #004085;
+  background-color: #CCE5FF;
+  border: 1px solid #88daff;
+  padding: 10px;
+  width: 275px;
+}
 /* Edit Page */
 
 .img-preview{
